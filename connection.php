@@ -9,7 +9,7 @@
     die("Connection could not be established");
   }
   else{
-    echo "Successfully connected.";
+    //echo "Successfully connected.";
   }
 
 

@@ -6,9 +6,10 @@
   $pas = $_POST['userpasswor'];
 
   $sql = 'insert into userdata(firstname,lastname,username,password) values ("' .$fname. '","' .$lname. '","' .$uid. '","' .$pas. '")';
-  echo $sql;
-  if($conn->query($sql)){
-    echo "Data Successfully stored";
-  }
 
+  if($conn->query($sql)){
+
+    header('Location:http://localhost/myproject/welcome.php');
+  }
+  
  ?>
