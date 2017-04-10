@@ -7,30 +7,32 @@ html {
 }
 
 body {
-
-  background-image:url('col.jpg');
-  background-repeat: no-repeat;
+	background-image:url('leo.jpg');
+  
   background-size:cover;
   font-family: 'Titillium Web', sans-serif;
 }
 
 a {
   text-decoration: none;
-  color: white;
+  color: blue;
   -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 a:hover {
-  color:#070723;
+  color:black;
 }
 
 .form {
-
+	
   padding: 20px;
   max-width: 300px;
   margin: 40px auto;
-  border-radius: 4px;
-  /*box-shadow: 0 4px 10px 4px #ffdb99;*/
+  border: 1px solid grey;
+  border-radius: 30px;
+  background :rgba(255,255,255,0.8);
+ 
+  /*box-shadow: 0 4px 10px 4px black;*/
 }
 
 .tab-group {
@@ -48,7 +50,7 @@ a:hover {
   text-decoration: none;
   padding: 15px;
 
-  color: #ffffff;
+  color: black;
   font-size: 15px;
   float: left;
   width: 50%;
@@ -72,9 +74,20 @@ a:hover {
 
 h1 {
   text-align: center;
-  color: #ffffff;
+  color: black;
   font-weight: 300;
   margin: 0 0 40px;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+  font-family:Impact Regular;
+  font-weight: 300;
+  font-size:50px;
+  margin: 0 0 40px;
+  letter-spacing:.1em ;
+  
 }
 
 label {
@@ -82,7 +95,7 @@ label {
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
   left: 13px;
-  color: rgba(255, 255, 255, 0.5);
+  color: black;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
@@ -105,7 +118,7 @@ label.active .req {
 }
 
 label.highlight {
-  color: #ffffff;
+  color:black;
 }
 
 input, textarea {
@@ -114,27 +127,27 @@ input, textarea {
   width: 100%;
   height: 45px;
   padding: 5px 10px;
-  background: none;
+  background: #ffffff;
   background-image: none;
   border: 1px solid #a0b3b0;
-  color: #ffffff;
-  border-radius: 20;
+  color: black;
+  border-radius: 0;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
 input:focus, textarea:focus {
   outline: 0;
-  border-color: #1d7000;
+  border-color: #03a403;
 }
 
 textarea {
-  border: 2px solid #a0b3b0;
+  border: 2px solid green;
   resize: vertical;
 }
 
 .field-wrap {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .top-row:after {
@@ -154,13 +167,13 @@ textarea {
 .button {
   border: 0;
   outline: none;
-  border-radius: 25px;
+  border-radius: 2px;
   padding: 10px 0;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: .1em;
-  background: #1d7000;
+  background: green;
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -168,7 +181,7 @@ textarea {
 
 }
 .button:hover, .button:focus {
-  background: #f0bf3c;
+  background: #03a403;
 }
 
 .button-block {

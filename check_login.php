@@ -24,7 +24,7 @@
         }
 
     $loggedin_status=True;
-    header('Location:http://localhost/myproject/Homepage.php');
+    header('Location:http://localhost/3/Homepage.php');
   }
 
  ?>

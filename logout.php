@@ -1,5 +1,5 @@
 <?php
   session_unset();
   session_destroy();
-  header('Location:http://localhost/myproject/welcome.php');
+  header('Location:http://localhost/3/welcome.php');
  ?>

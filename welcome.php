@@ -13,8 +13,8 @@
 
 
 <body>
-  <br><br><br>
-  <h1>Welcome to Our Website</h1>
+  <br><br>
+  <h2>MovieManiac</h2>
  <body>
   <div class="form">
 
@@ -46,7 +46,7 @@
             <input type="password" name = "upass" required autocomplete="off"/>
           </div>
 
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
+
 
           <input type="submit" name="button_login" value = "login" class="button button-block"/>
 

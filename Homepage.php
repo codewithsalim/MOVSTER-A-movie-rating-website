@@ -5,25 +5,101 @@
 <html>
 <head>
 <style>
-* {box-sizing: border-box}
-body {font-family: 'Titillium Web', sans-serif}
-
-/* Style the tab */
-
-div.tab {
-    float: left;
-
-    background-color: #302a2e;
-    width: 20%;
-    height: 850px;
-	border-radius:50px;
+.nav {
+    background: green;
+    height: 50px;
+    display: inline-block;
+    width:100%;
+    border-radius: 0px
 }
 
+.nav li {
+    float: right;
+    list-style-type: none;
+    position: relative;
+
+}
+
+.nav li a {
+    font-size: 15px;
+    color: white;
+    display: block;
+    line-height: 50px;
+    padding: 0 50px;
+    text-decoration: none;
+
+    font-family: Montserrat, sans-serif;
+
+	border-radius: 0px
+}
+.nav li a:hover {
+    background-color: #03a403;
+}
+
+
+#search {
+    width: 260px;
+    margin: 2.5px;
+}
+#search_text{
+    width: 200px;
+    padding: 15px 0 15px 20px;
+    font-size: 15px;
+    font-family: Montserrat, sans-serif;
+    border: 0 none;
+    height: 45px;
+    margin-right: 0;
+    color: rgb(43, 42, 42);
+    outline: none;
+    background: #ffffcc;
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: rgb(43, 42, 42);
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: rgb(43, 42, 42);
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: rgb(43, 42, 42);
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: rgb(43, 42, 42);
+}
+#search_text:focus {
+    background: #ffffb3;
+	border-color: rgb(26, 5, 56);
+}
+#search_button {
+    border: 0 none;
+    background: #302a2e url(ic.jpg) ;
+    width: 45px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 45px;
+    cursor: pointer;
+	border-radius: 0px
+}
+
+* {box-sizing: border-box}
+body {font-family: 'Titillium Web', sans-serif}
+/* Style the tab */
+div.tab {
+    float: left;
+    background-color: #cecfcd;
+    width: 18%;
+    height: 1600px;
+	  border-radius:0px;
+
+}
 /* Style the buttons inside the tab */
 div.tab button {
     display: block;
     background-color: inherit;
-    color: #d3d3d3;
+    color: black;
     padding: 20px 10px;
     width: 100%;
     border: none;
@@ -31,85 +107,77 @@ div.tab button {
     text-align: center;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 17px;
-	border-radius:50px;
-}
+    font-size: 15px;
 
+}
 /* Change background color of buttons on hover */
 div.tab button:hover {
-    background-color: #696969;
-
+    background-color: #d9dad8;
 }
-
 /* Create an active/current "tab button" class */
 div.tab button.active {
-    background-color: #c8c0c0;
-	color:#4c0000;
+    background-color: #008000;
+	color:white;
 }
-
 /* Style the tab content */
 .tabcontent {
-    float: left;
-    padding: 15px 12px;
-
-    width: 70%;
+    float:left;
+    padding: 0px 100px;
+    width: 80%;
     border-left: none;
-    height: 300px;
-}
 
+}
 /* other */
 .container {
-    position: relative;
-    width: 50%;
-		border-radius:50px;
-}
+    position:relative;
+    width:100%;
 
+		border-radius:0px;
+    background:  #cecfcd;
+}
 .image {
   opacity: 1;
-  padding: 25px 25px 25px 25px;
-
+  padding: 5px 5px 5px 5px;
   display: block;
-  width: 100%;
-  height: auto;
+  max-width: 100%;
+
+  height: 250px;
   transition: .5s ease;
   backface-visibility: hidden;
-}
 
+}
 .middle {
   transition: .5s ease;
-  opacity: 0;
+  opacity: 1;
   position: absolute;
   top: 50%;
-  left: 50%;
+  right: 0%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%)
 }
-
 .container:hover .image {
   opacity: 0.5;
 }
-
 .container:hover .middle {
   opacity: 1;
 }
-
 .text {
   background-color: inherit;
-
   color: black;
   font-size: 25px;
   padding: 16px 32px;
-
 }
 li a:hover {
     background-color: #ff9d2a;
 }
+
+
 </style>
 </head>
-<body style="background-color:#829db4">
+<body style="background-color:white">
 
-<ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #f57722; border-radius: 50px">
-  <li style="float: left"><a href="" style=" display: block; color: white; text-align: center; padding: 16px; text-decoration: none;">
+<ul class="nav">
+   <li style="float: left"><a href="" style=" display: block; color: white; text-align: center; padding:0 25px; text-decoration: none;">
   <?php
     if(isset($_SESSION['loggedin_id'])){
       echo "  Welcome ".$_SESSION['loggedin_id'];
@@ -117,8 +185,15 @@ li a:hover {
    ?>
  </a></li>
 
-  <li style="float: right"><a href="logout.php" style=" display: block; color: white; text-align: center; padding: 16px; text-decoration: none;">Logout</a></li>
-  <li style="float: right"><a href="#search" style=" display: block; color: white; text-align: center; padding: 16px; text-decoration: none;">Search</a></li>
+   <li>
+        <a href="logout.php">Logout</a>
+    </li>
+    <li id="search">
+        <form action="search.php" method="get">
+            <input type="text" name="search_text" id="search_text" placeholder="Search"/>
+            <input type="submit" value="" name="search_button" id="search_button"></a>
+        </form>
+    </li>
 
 </ul>
 
@@ -133,21 +208,21 @@ li a:hover {
 
 
 <div id="Genre" class="tabcontent">
-<div class="container" style="float:right; background-color:#d3d3d3">
+<div class="container" >
 
   <a href="genre.php?para=Action">
- <img src="action1.jpg" alt="Action" class="image" style="width:100% height:250px">
+ <img src="images/ac.jpg" alt="Action" class="image" >
 
   <div class="middle">
     <div class="text">Action</div>
   </div>
 </a>
  </div>
-
-<div class="container" style="background-color:#c8c0c0">
+<br>
+<div class="container" >
 
   <a href="genre.php?para=Thriller">
- <img src="thriller.jpg" alt="Thriller" class="image" style="width:100%">
+ <img src="images/th.jpg" alt="Thriller" class="image"  >
 
   <div class="middle">
     <div class="text">Thriller</div>
@@ -155,39 +230,56 @@ li a:hover {
   </div>
 </a>
 </div>
-
- <div class="container" style="float:right; background-color:#d3d3d3">
-
-  <a href="genre.php?para=Romance">
- <img src="romance.jpg" alt="Avatar" class="image" style="width:100%">
-
-  <div class="middle">
-    <div class="text">Romance</div>
-  </div>
-</a>
- </div>
-
- <div class="container" style="background-color:#c8c0c0">
-
-  <a href="genre.php?para=Drama">
- <img src="drama.jpg" alt="Avatar" class="image" style="width:100%">
-
-  <div class="middle">
-    <div class="text">Drama</div>
-  </div>
-</a>
-</div>
-
-<div class="container" style=" background-color:#d3d3d3">
+<br>
+<div class="container">
 
  <a href="genre.php?para=Comedy">
-<img src="comedy.jpg" alt="Avatar" class="image" style="width:100%">
+<img src="images/co.jpg" alt="Avatar" class="image" >
 
  <div class="middle">
    <div class="text">Comedy</div>
  </div>
 </a>
+
+
 </div>
+<br>
+<div class="container" >
+
+ <a href="genre.php?para=Drama">
+<img src="images/dra.jpg" alt="Avatar" class="image" >
+
+ <div class="middle">
+   <div class="text">Drama</div>
+ </div>
+</a>
+</div>
+<br>
+<div class="container" >
+
+ <a href="genre.php?para=Romance">
+<img src="images/ro.jpg" alt="Avatar" class="image" >
+
+ <div class="middle">
+   <div class="text">Romance</div>
+ </div>
+</a>
+</div>
+<br>
+<div class="container" >
+
+ <a href="genre.php?para=Horror">
+<img src="images/ho.jpg" alt="Avatar" class="image" >
+
+ <div class="middle">
+   <div class="text">Horror</div>
+ </div>
+</a>
+</div>
+
+
+
+
 
 </div>
 
@@ -221,7 +313,6 @@ function openC(evt, choice) {
     document.getElementById(choice).style.display = "block";
     evt.currentTarget.className += " active";
 }
-
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>

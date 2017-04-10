@@ -1,4 +1,7 @@
 <?php
+
+
+  //$_GLOBALS['flag'] = False;
   $current_mid = $_GET['movie'];
   require_once 'connection.php';
   //echo $current_mid;
@@ -14,6 +17,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <style>
 div.main {
     background-color: #302a2e;
@@ -30,7 +34,6 @@ p {
 h2 {
   white-space:pre;
    border-radius: 5px;}
-
 .nav {
     background: #f57722;
     height: 60px;
@@ -38,14 +41,13 @@ h2 {
     width:95%;
     border-radius: 50px
 }
- 
+
 .nav li {
     float: right;
     list-style-type: none;
     position: relative;
-   
-}
 
+}
 .nav li a {
     font-size: 16px;
     color: white;
@@ -61,8 +63,6 @@ h2 {
 .nav li a:hover {
     background-color: #ff9d2a;
 }
-
-
 #search {
     width: 357px;
     margin: 4px;
@@ -117,26 +117,83 @@ padding:3px 32px 3px 3px;
 height: 31px;
 width: 1000px;
 }
+
+.txt-center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+
+.clear {
+  float: none;
+  clear: both;
+}
+
+.rating {
+    width: 90px;
+
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+}
+
+.rating > label {
+    float: right;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 1.1em;
+    cursor: pointer;
+    color: #000;
+}
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+}
+
+
+
 </style>
 </head>
 <body style="background-color:#829db4">
 
 <ul class="nav">
     <li>
-        <a href="#home">HOME</a>
+        <a href="Homepage.php">HOME</a>
     </li>
     <li id="search">
-        <form action="" method="get">
+        <form action="search.php" method="get">
             <input type="text" name="search_text" id="search_text" placeholder="Search"/>
-            <input type="button" name="search_button" id="search_button">
+            <input type="submit" value="" name="search_button" id="search_button">
         </form>
     </li>
-    
+
 </ul>
 
 <div class="main">
 <h1 style="color:#e50000;font:Times New Roman Bold Italic"> <?php echo $row['mname'] ; ?> </h1>
 <img src="images\<?php echo $row['mid']; ?>.jpg" alt="POSTER" style="float:left;width:150px;height:200px;margin: 0 20px 20px 15px">
+<?php
+  $_GET['id'] = $current_mid;
+  require_once 'watchlater.php';
+
+?>
 <h2 style="color:#bba3d0;font:Times New Roman Bold Italic">  PLOT:</h2>
 <h4 style="font-weight:normal; font-size:110%">
   <?php echo $row['plot'] ; ?>
@@ -149,26 +206,44 @@ width: 1000px;
 </form>
 
 </div>
-<p style="font-size:20px; background-color:#151515">         <br>          Rate this movie
-<form>
-  <input type="radio" name="rating" value="1">1
-  <input type="radio" name="rating" value="2">2
-   <input type="radio" name="rating" value="3">3
-    <input type="radio" name="rating" value="4">4
-	 <input type="radio" name="rating" value="5">5
-</form>
+<p style="font-size:20px; background-color:#151515">Rating : <?php echo $row['avg_rating']; ?> / 5    <br>Rate this movie
+  <div class="txt-center">
+    <form action ="add_rating.php?mid=<?php echo $current_mid; ?>" method ="post">
+          <div class="rating">
+              <input id="star5" name="star" type="radio" value="5" class="radio-btn hide"  />
+              <label for="star5" >☆</label>
+              <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+              <label for="star4" >☆</label>
+              <input id="star3" name="star" type="radio" value="3" class="radio-btn hide"  />
+              <label for="star3" >☆</label>
+              <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+              <label for="star2" >☆</label>
+              <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+              <label for="star1" >☆</label>
+              <div class="clear"></div>
+          </div>
+          <button type="submit" name="tadap" style="float:left">Rate</button><br>
+      </form>
+  </div>
+
+
+
+
 </p>
 <h2 style="color:#302a2e;font:Times New Roman Bold Italic; background-color:#c8c0c0">  STARRING:  <pre style="color:#4c0000"> <?php echo $row['actors'] ; ?></pre></h2>
 <h2 style="color:black;font:Times New Roman Bold Italic; background-color:#d3d3d3">  DIRECTOR:<pre style="color:#990000"> <?php echo $row['director'] ; ?> </pre></h2>
- <h2 style="color:#302a2e;font:Times New Roman Bold Italic; background-color:#c8c0c0"> WRITER: <pre style="color:#4c0000"><?php echo $row['writer'] ; ?></pre></h2>
+<h2 style="color:#302a2e;font:Times New Roman Bold Italic; background-color:#c8c0c0"> WRITER: <pre style="color:#4c0000"><?php echo $row['writer'] ; ?></pre></h2>
 <h2 style="color:black;font:Times New Roman Bold Italic; background-color:#d3d3d3">  GENRE: <pre style="color:#990000"> <?php echo $row['genre'] ; ?></pre></h2>
 
-<form action="">
-<textarea name="COMMENTS" cols="100" rows="5" style="border:3px double #F7730E;" placeholder="ENTER YOUR REVIEWS HERE..">
+<h2 style="color:black;font:Times New Roman Bold Italic; background-color:#d3d3d3">  COMMENTS:<pre style="color:#990000">
+  <?php include_once 'comments.php';?></pre></h2>
 
+<form action="addcomment.php?id=<?php echo $current_mid; ?>" method ="post">
+<textarea name="added_comment" rows="4" cols="100" placeholder="Add your comment here..." style="border:3px solid black">
 </textarea>
-<br />
-<input type="submit" value="post" />
+<br>
+<input type="submit" value="Post" style="color:white;background-color:green" />
+
 </form>
 
 
