@@ -15,6 +15,9 @@
     $query2 = 'INSERT INTO ratings(username,mid,rating) VALUES("'.$useri.'",'.$movi.','.$rat.')';
     $result2=$conn->query($query2);
   }
+
+  $update = 'UPDATE moviesdata SET avg_rating = (SELECT AVG(rating) FROM ratings WHERE ratings.mid = moviesdata.mid)';
+  $rrrrrr =$conn->query($update);
   header('Location:http://localhost/3/details.php?movie='.$movi.'');
 
 
